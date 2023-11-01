@@ -48,10 +48,11 @@ def ex2():
     def dist(x, y):
         return np.sqrt(x**2 + y**2)
     
-    f = 7
-    f_s = 1000
-    sec = 3
-    n = sec * f_s
+    f = 7 # Frecventa sinusoidei
+    f_s = 1000 # Frecventa de esantionare
+    sec = 3 # Durata semnalului
+    n = sec * f_s # Nr. de esatnioane
+    
     time = np.linspace(0, sec, n)
     x = np.sin(2 * np.pi * f * time)
     
@@ -59,11 +60,11 @@ def ex2():
     for i in range(n):
         y[i] = x[i] * np.e ** (-2 * np.pi * 1j * time[i])
 
-    omegas = [1, 5, 7, 9]
+    omegas = [1, 5, f, 9]
     positions = [(0, 0), (0, 1), (1, 0), (1, 1)]
 
     _, axs = plt.subplots(2)
-    plt.suptitle('Semnal sinusoidal și reprezentarea sa în planul complex (f = 7 Hz)')
+    plt.suptitle(r'Semnal sinusoidal și reprezentarea sa în planul complex (f = {} Hz)'.format(f))
     plt.subplots_adjust(hspace=0.5)
     axs[0].plot(time, x, 'g')
     axs[0].set_xlabel('Timp (secunde)')
@@ -84,7 +85,7 @@ def ex2():
 
     _, axs2 = plt.subplots(2, 2, figsize=(8, 6))
     plt.suptitle('Frecvențe de înfășurare ale cercului unitate')
-    plt.subplots_adjust(wspace=0.28, hspace=0.3)
+    plt.subplots_adjust(wspace=0.28, hspace=0.4)
 
     for i, omega in enumerate(omegas):
         xg = wrap(omega).real
@@ -97,6 +98,8 @@ def ex2():
         ax.set_ylim([-1.2, 1.2])
         ax.axhline(0, c='black')
         ax.axvline(0, c='black')
+        ax.set_xlabel('Real')
+        ax.set_ylabel('Imaginar')
         ax.grid(linestyle='--')
 
     plt.show()
@@ -114,6 +117,8 @@ def ex3():
             X[o] += x[i] * np.e ** (-2 * np.pi * 1j * i * o / n)
 
     _, axs = plt.subplots(2)
+    plt.suptitle('Modulul transformatei Fourier pentru un semnal')
+    plt.subplots_adjust(hspace=0.4)
     axs[0].plot(time, x)
     axs[0].set_xlabel('Timp (s)')
     axs[0].set_ylabel('x(t)')
@@ -127,10 +132,12 @@ def ex3():
 
     plt.show()
 
+
 def main():
     ex1()
     ex2()
     ex3()
+
 
 if __name__ == '__main__':
     main()
