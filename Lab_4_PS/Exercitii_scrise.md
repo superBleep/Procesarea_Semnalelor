@@ -6,7 +6,7 @@ Pentru a nu se pierde informatii, inregistrarea contrabasului trebuie esantionat
 
 # Exercitiul 5
 Vocalele 'e' si 'i' sunt asemanatoare d.p.d.v. al frecventelor inalte atinse.
-Vocalele 'o' si 'u' prezinta o putere a semnalului crescuta in domeniul unor frecvnete mai scazute.
+Vocalele 'o' si 'u' prezinta o putere a semnalului crescuta in domeniul unor frecvente mai scazute.
 
 # Exercitiul 7
 10 * log_10(SNR) = 80 dB => log_10(SNR) = 8 dB
