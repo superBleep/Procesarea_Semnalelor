@@ -35,17 +35,17 @@ def ex1():
     # Subpunctul e
     centered_x = x - np.mean(x)
 
-    # Subpunctul f - nu e bine
+    # Subpunctul f
     X_abs = np.fft.fft(centered_x)
-    X_abs = np.abs(X / n)
-    X_abs = X[:int(n/2)]
+    X_abs = np.abs(X_abs / n)
+    X_abs = X_abs[:int(n/2)]
 
     top4_indices = np.argpartition(X_abs, -4)[-4:]
     top4_abs = X_abs[top4_indices]
     top4_freq = f[top4_indices]
 
     print('Primele 4 cele mai mari module:', top4_abs)
-    print('Primele 4 cele mai mari frecvențe (Hz)', top4_freq)
+    print('Frecvențe asociate primelor 4 module (Hz)', top4_freq)
 
     # Subpunctul g
     start = 5592 # Esantionul de inceput
