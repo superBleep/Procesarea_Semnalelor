@@ -40,15 +40,26 @@ def ex2():
     p = np.array([np.random.randint(-a_max, a_max) for _ in range(n)])
     q = np.array([np.random.randint(-a_max, a_max) for _ in range(n)])
 
-    print(p * q)
+    print('Produsul polinoamelor:', p * q)
 
     p_fft = np.fft.fft(p)
     q_fft = np.fft.fft(q)
 
+    r_fft_m = np.empty(n).astype(np.complex128)
+    for i in range(n):
+        s = 0
+        for k in range(n-1):
+            s += q_fft[k] * p_fft[i-k]
+        r_fft_m[i] = s
+
+    r_m = np.fft.ifft(r_fft_m).real
+
+    print('Produsul polinoamelor (convolutie cu for):', r_m)
+
     r_fft = np.convolve(p_fft, q_fft, mode='same')
     r = np.fft.ifft(r_fft).real
 
-    print(r)
+    print('Produsul polinoamelor (convolutie Numpy):', r)
 
 
 def ex3():
@@ -200,7 +211,7 @@ def ex4():
 
 
 if __name__ == '__main__':
-    ex1()
+    #ex1()
     ex2()
-    ex3()
-    ex4()
+    #ex3()
+    #ex4()
