@@ -14,10 +14,11 @@ def ex1():
     season = np.sin(2 * np.pi * 3 * x) + np.sin(2 * np.pi * 5 * x)
     res = np.random.rand(n)
     
+    # Scalarea primelor doua componente
     trend = trend * 1e-5
     season = season * 1e12
 
-    series = trend + season + res
+    series = trend + season + res # Seria de timp
 
     _, axs = plt.subplots(4, figsize=(7, 7))
     plt.subplots_adjust(hspace=0.37)
@@ -55,25 +56,23 @@ def ex1():
     plt.grid(linestyle='--')
 
     # Subpunctul (c)
-    # Predictia functioneaza de la p incolo
-    # pana la p sunt date de antrenare
-    p = 500
+    p = 200
     ar = np.empty(n)
 
     for i in range(n):
         if i - p < 0:
-            ar[i] = series[i]
+            ar[i] = 0
         else:
             for j in range(p):
                 ar[i] += x[i] * series[i - j]
 
     plt.figure(3)
-    plt.title('Seria de timp și predicțiile sale')
+    plt.title('Seria de timp (normalizată) și predicțiile sale')
 
-    plt.plot(x, normalize(ar), 'red', label='Model AR')
-    plt.plot(x, series, 'black', label='Seria de timp')
+    plt.plot(x, normalize(ar), 'red', label='Model AR', zorder=3)
+    plt.plot(x, nseries, 'black', label='Seria de timp', zorder=2)
 
-    plt.grid(linestyle='--')
+    plt.grid(linestyle='--', zorder=1)
 
     plt.show()
 
