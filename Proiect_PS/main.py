@@ -98,8 +98,8 @@ def main():
 
     plt.figure(3)
 
-    plt.bar(xAxis - w, statsWebP[:, 1], 2*w, label="WebP", color="purple")
-    plt.bar(xAxis + w, statsJPEG[:, 1], 2*w, label="JPEG", color="orange")
+    plt.bar(xAxis - w, statsWebP[:, 2], 2*w, label="WebP", color="purple")
+    plt.bar(xAxis + w, statsJPEG[:, 2], 2*w, label="JPEG", color="orange")
 
     plt.xticks(xAxis, x)
     plt.xlabel("Imagini")
